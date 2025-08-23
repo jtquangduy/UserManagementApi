@@ -1,0 +1,99 @@
+h2 {  
+  font-size: 2rem;  
+  color: #2c3e50;  
+  margin-bottom: 20px;  
+  border-bottom: 2px solid #2980b9;  
+  padding-bottom: 8px;  
+}  
+  
+button {  
+  background-color: #2980b9;  
+  color: white;  
+  border: none;  
+  padding: 8px 14px;  
+  margin: 0 5px 10px 0;  
+  font-size: 1rem;  
+  border-radius: 4px;  
+  cursor: pointer;  
+  transition: background-color 0.3s ease;  
+}  
+  
+button:hover {  
+  background-color: #1c5980;  
+}  
+  
+button:focus {  
+  outline: 2px solid #1c5980;  
+  outline-offset: 2px;  
+}  
+  
+button[routerLink="/add"] {  
+  margin-bottom: 25px;  
+  float: right;  
+}  
+  
+.error {  
+  color: #c0392b;  
+  background-color: #f9d6d5;  
+  border: 1px solid #e74c3c;  
+  padding: 10px 15px;  
+  margin-bottom: 20px;  
+  border-radius: 4px;  
+}  
+  
+/* Table styling */  
+table {  
+  width: 100%;  
+  border-collapse: collapse;  
+  font-size: 1rem;  
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  
+  background-color: #fff;  
+  border-radius: 6px;  
+  overflow: hidden;  
+}  
+  
+thead {  
+  background-color: #2980b9;  
+  color: white;  
+}  
+  
+thead th {  
+  padding: 12px 15px;  
+  text-align: left;  
+}  
+  
+tbody tr {  
+  border-bottom: 1px solid #ddd;  
+  transition: background-color 0.2s ease;  
+}  
+  
+tbody tr:hover {  
+  background-color: #f1f9ff;  
+}  
+  
+tbody td {  
+  padding: 12px 15px;  
+}  
+  
+tbody td:last-child {  
+  white-space: nowrap;  
+}  
+  
+tbody button {  
+  background-color: #3498db;  
+  padding: 6px 12px;  
+  font-size: 0.9rem;  
+  margin: 0 4px;  
+}  
+  
+tbody button:hover {  
+  background-color: #217dbb;  
+}  
+  
+tbody button:last-child {  
+  background-color: #e74c3c;  
+}  
+  
+tbody button:last-child:hover {  
+  background-color: #c0392b;  
+}  

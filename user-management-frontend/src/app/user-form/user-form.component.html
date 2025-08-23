@@ -1,0 +1,35 @@
+<h2>{{ isEditMode ? 'Edit User' : 'Add User' }}</h2>  
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">  
+  <div>  
+    <label>First Name:</label>  
+    <input formControlName="firstName" />  
+    <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="error">  
+      First name is required and max 50 characters.  
+    </div>  
+  </div>  
+  <div>  
+    <label>Last Name:</label>  
+    <input formControlName="lastName" />  
+    <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched" class="error">  
+      Last name is required and max 50 characters.  
+    </div>  
+  </div>  
+  <div>  
+    <label>Email:</label>  
+    <input formControlName="email" />  
+    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="error">  
+      Valid email is required.  
+    </div>  
+  </div>  
+  <div>  
+    <label>Phone Number:</label>  
+    <input formControlName="phoneNumber" />  
+  </div>  
+  <div>  
+    <label>Zip Code:</label>  
+    <input formControlName="zipCode" />  
+  </div>  
+  <button type="submit" [disabled]="userForm.invalid">Save</button>  
+  <button type="button" (click)="cancel()">Cancel</button>  
+</form>  
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>  
