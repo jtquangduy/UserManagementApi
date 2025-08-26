@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
 
 export interface ConfirmDialogData {
   title?: string;
@@ -16,23 +16,31 @@ export interface ConfirmDialogData {
   standalone: true,
   imports: [CommonModule, MatDialogModule, MatButtonModule, MatIconModule],
   template: `
-  <div class="dialog-wrap">
-    <h2 class="title">
-      <mat-icon aria-hidden="true" style="vertical-align: middle; margin-right:8px;">help</mat-icon>
+    <h2 mat-dialog-title class="title">
+      <mat-icon aria-hidden="true" class="leading-icon">help</mat-icon>
       {{ data.title || 'Confirm' }}
     </h2>
-    <div class="content">{{ data.message || 'Are you sure?' }}</div>
-    <div class="actions">
-      <button mat-button (click)="onCancel()">{{ data.cancelText || 'Cancel' }}</button>
-      <button mat-raised-button color="warn" (click)="onConfirm()">{{ data.confirmText || 'Delete' }}</button>
+
+    <div mat-dialog-content class="content">
+      {{ data.message || 'Are you sure?' }}
     </div>
-  </div>
+
+    <div mat-dialog-actions align="end" class="actions">
+      <button mat-button (click)="onCancel()">
+        {{ data.cancelText || 'Cancel' }}
+      </button>
+      <button mat-raised-button color="warn" (click)="onConfirm()" cdkFocusInitial>
+        {{ data.confirmText || 'Delete' }}
+      </button>
+    </div>
   `,
   styles: [`
-    .dialog-wrap { max-width: 420px; }
-    .title { margin: 0 0 8px; font-weight: 600; }
-    .content { color: var(--muted); margin-bottom: 16px; }
-    .actions { display: flex; justify-content: flex-end; gap: 8px; }
+    .title { display: flex; align-items: center; gap: 8px; margin: 0; }
+    .leading-icon { vertical-align: middle; }
+    .content { margin-top: 4px; }
+    /* Không dùng CSS variables để tránh phụ thuộc theme tự define */
+    /* Nếu muốn màu “nhạt” cho nội dung, dùng opacity nhẹ */
+    .content { opacity: .8; }
   `]
 })
 export class ConfirmDialogComponent {
