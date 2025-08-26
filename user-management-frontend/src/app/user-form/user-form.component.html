@@ -1,35 +1,55 @@
-<h2>{{ isEditMode ? 'Edit User' : 'Add User' }}</h2>  
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">  
-  <div>  
-    <label>First Name:</label>  
-    <input formControlName="firstName" />  
-    <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="error">  
-      First name is required and max 50 characters.  
-    </div>  
-  </div>  
-  <div>  
-    <label>Last Name:</label>  
-    <input formControlName="lastName" />  
-    <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched" class="error">  
-      Last name is required and max 50 characters.  
-    </div>  
-  </div>  
-  <div>  
-    <label>Email:</label>  
-    <input formControlName="email" />  
-    <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="error">  
-      Valid email is required.  
-    </div>  
-  </div>  
-  <div>  
-    <label>Phone Number:</label>  
-    <input formControlName="phoneNumber" />  
-  </div>  
-  <div>  
-    <label>Zip Code:</label>  
-    <input formControlName="zipCode" />  
-  </div>  
-  <button type="submit" [disabled]="userForm.invalid">Save</button>  
-  <button type="button" (click)="cancel()">Cancel</button>  
-</form>  
-<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>  
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Edit User' : 'Add User' }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-grid">
+
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+        <mat-error *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched">
+          First name is required and max 50 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+        <mat-error *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
+          Last name is required and max 50 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="wide">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+        <mat-error *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+          Valid email is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Zip Code</mat-label>
+        <input matInput formControlName="zipCode" />
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid || isSubmitting">
+          <mat-icon *ngIf="!isSubmitting">save</mat-icon>
+          <mat-progress-spinner *ngIf="isSubmitting" mode="indeterminate" diameter="18"></mat-progress-spinner>
+          Save
+        </button>
+        <button mat-button type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+  </mat-card-content>
+</mat-card>

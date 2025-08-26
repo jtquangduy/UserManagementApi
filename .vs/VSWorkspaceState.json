@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\user-management-frontend",
     "\\UserManagementApi",
     "\\UserManagementApi\\Controllers"
   ],
-  "SelectedNode": "\\UserManagementApi.sln",
+  "SelectedNode": "\\user-management-frontend",
   "PreviewInSolutionExplorer": false
 }

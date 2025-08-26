@@ -1,2 +1,14 @@
-<h1>User Management</h1>  
-<router-outlet></router-outlet> 
+<!-- app.component.html -->
+<mat-toolbar color="primary" class="app-toolbar">
+  <span class="font-semibold">User Management</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/">Users</a>
+  <a mat-button routerLink="/add">Add User</a>
+  <button mat-icon-button (click)="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
+    <mat-icon>{{ darkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="page-wrap">
+  <router-outlet></router-outlet>
+</div>
